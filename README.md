@@ -1,12 +1,20 @@
 #broomstick
 
-Lightweight streaming and in-memory caching static file middleware for Director
+Lightweight streaming and in-memory caching static file middleware with gzip support for Director.
+
+*Please note, this is not the original version, you can find it [here](http://github.com/ecto/broomstick) by [ecto](https://github.com/ecto). This version simply adds gzip support.
 
 ![broomstick](http://i.imgur.com/B2UpG.jpg)
 
 ##install
 
     npm install broomstick
+    
+then..
+
+Clone this or [download broomstick.js](http://raw.github.com/lawrencekgrant/broomstick/master/broomstick.js)
+    
+Copy [broomstick.js](http://raw.github.com/lawrencekgrant/broomstick/master/broomstick.js) over your local './node_modules/broomstick/broomstick.js'
 
 ##usage
 
@@ -37,7 +45,8 @@ When creating a `new broomstick()` object, you can specify options. These are th
 var broom = new broomstick({
   path: 'public',
   verbose: false,
-  index: 'index.html' // default file to load on ./ paths
+  index: 'index.html', // default file to load on ./ paths
+  gzip: true //enables gzip if the client supports it. defaults to false.
 });
 ````
 
