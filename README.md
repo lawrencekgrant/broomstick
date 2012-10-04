@@ -2,9 +2,9 @@
 
 ![build-status](https://secure.travis-ci.org/lawrencekgrant/broomstick.png)
 
-Lightweight streaming and in-memory caching static file middleware with gzip support for Director.
+Lightweight streaming and in-memory caching static file middleware with gzip and deflate support for Director.
 
-*Please note, this is not the original version, you can find it [here](http://github.com/ecto/broomstick) by [ecto](https://github.com/ecto). This version simply adds gzip support.
+*Please note, this is not the original version, you can find it [here](http://github.com/ecto/broomstick) by [ecto](https://github.com/ecto). This version simply adds gzip and deflate support.
 
 ![broomstick](http://i.imgur.com/B2UpG.jpg)
 
@@ -49,6 +49,7 @@ var broom = new broomstick({
   verbose: false,
   index: 'index.html', // default file to load on ./ paths
   gzip: true //enables gzip if the client supports it. defaults to false.
+  deflate: true //enables deflate if the client supports it. defaults to false.
 });
 ````
 
