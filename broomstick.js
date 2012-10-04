@@ -14,6 +14,8 @@ var Broomstick = function (options) {
   this.index = options.index || 'index.html';
   this.verbose = options.verbose || false;
   this.gzip = options.gzip || false;
+  this.deflate = options.deflate || false;
+  this.preferDeflate = options.preferDeflate || false;
   this.cache = {};
 
   var b = this;
@@ -47,13 +49,14 @@ var Broomstick = function (options) {
           res.end();
         } else {
           var type = mime.lookup(path.extname(route));
-          var encoding = (b.gzip ? 'gzip' : '');
+          var encoding = (b.gzip ? 'gzip' : (b.deflate ? 'deflate' : ''));
           res.writeHead(200, { 'Content-Type': type, 'Content-Encoding': encoding});
 
           //if gzip is enabled, pass the file through a gzipper
           var fileStream = (b.gzip ?
-            fs.createReadStream(filepath).pipe(zlib.createGzip()) :
-            fs.createReadStream(filepath));
+            fs.createReadStream(filepath).pipe(zlib.createGzip()) : (b.deflate ?
+              fs.createReadStream(filepath).pipe(zlib.createDeflate()) :
+                fs.createReadStream(filepath)));
 
             //we can only one buffer per encoding, so, we'll change the name of the route to match
           route = route + encoding;
