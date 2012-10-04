@@ -1,5 +1,7 @@
 #broomstick
 
+![build-status](https://secure.travis-ci.org/lawrencekgrant/broomstick.png)
+
 Lightweight streaming and in-memory caching static file middleware with gzip support for Director.
 
 *Please note, this is not the original version, you can find it [here](http://github.com/ecto/broomstick) by [ecto](https://github.com/ecto). This version simply adds gzip support.
